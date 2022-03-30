@@ -1,17 +1,19 @@
 const express = require("express");
 let port = process.env.PORT || 3000;
-let host = '0.0.0.0';
+let host = '127.0.0.1';
 
 let app = express();
 
-app.get("/test/:uid",(request,response)=>{
-    let id = request.params.uid;
+app.get("/test",(request,response)=>{
+    let sensor = request.query.sensorType;
+    let reading = request.query.reading;
 
-    console.log("ID: ");
-    console.log(id);
+    console.log("Reading: ");
+    console.log(reading);
 
     response.json({
-        message : id
+       sensor : sensor,
+       reading : reading
     })
 })
 
