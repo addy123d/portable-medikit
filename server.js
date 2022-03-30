@@ -1,6 +1,6 @@
 const express = require("express");
 let port = process.env.PORT || 3000;
-let host = '127.0.0.1';
+let host = '0.0.0.0';
 
 let app = express();
 
