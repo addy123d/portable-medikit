@@ -28,10 +28,17 @@ app.get("/:id",(request,response)=>{
     // Bring Data table !
     Data.findOne({id : id})
         .then((data)=>{
-            response.render("index",{
-                deviceData : data.data,
-                id : id
-            })
+            if(data){
+                response.render("index",{
+                    deviceData : data.data,
+                    id : id
+                })
+            }else{
+                response.json({
+                    message : "No such data available on this id :("
+                })
+            }
+
         })
         .catch(err=>console.log("Error: ",err));
 })
