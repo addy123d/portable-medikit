@@ -24,12 +24,13 @@ app.set("view engine","ejs");
 app.get("/:id",(request,response)=>{
 
     let {id} = request.params;
-    
+
     // Bring Data table !
     Data.findOne({id : id})
         .then((data)=>{
             response.render("index",{
-                deviceData : data.data
+                deviceData : data.data,
+                id : id
             })
         })
         .catch(err=>console.log("Error: ",err));
