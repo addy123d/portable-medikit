@@ -229,6 +229,9 @@
             </a>
         </div>
 
+        <%if(deviceData.length === 0){%>
+            <h2>No Data Found 😥</h2>
+        <%}else{%>
         <div class="grid">
             <%for(let i = 0; i < deviceData.length; i++){%>
             <article>
