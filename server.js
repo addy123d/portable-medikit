@@ -1,5 +1,6 @@
 const express = require("express");
 const mongo = require("mongoose");
+const ejs = require("ejs");
 let port = process.env.PORT || 3000;
 let host = '0.0.0.0';
 
@@ -17,6 +18,22 @@ mongo.connect(url)
     .catch(err=>console.log("Error: ",err));
 
 let app = express();
+
+app.set("view engine","ejs");
+
+app.get("/:id",(request,response)=>{
+
+    let {id} = request.params;
+    
+    // Bring Data table !
+    Data.findOne({id : id})
+        .then((data)=>{
+            response.render("index",{
+                deviceData : data.data
+            })
+        })
+        .catch(err=>console.log("Error: ",err));
+})
 
 app.get("/test",(request,response)=>{
     let user_id = request.query.id;
