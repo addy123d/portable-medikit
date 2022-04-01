@@ -21,7 +21,7 @@ let app = express();
 
 app.set("view engine","ejs");
 
-app.get("/:id",(request,response)=>{
+app.get("/home/:id",(request,response)=>{
 
     let {id} = request.params;
 
