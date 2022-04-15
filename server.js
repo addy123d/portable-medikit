@@ -44,7 +44,7 @@ app.get("/home/:id",(request,response)=>{
 })
 
 app.get("/test",(request,response)=>{
-    let user_id = request.query.id;
+    let user_id = request.query.id.replace(/ /g, "");
     let sensor = request.query.sensorType;
     let reading = request.query.reading;
 
