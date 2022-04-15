@@ -44,13 +44,12 @@ app.get("/home/:id",(request,response)=>{
 })
 
 app.get("/test",(request,response)=>{
-    let user_id = request.query.id.replace(/ /g, "");
+    // let user_id = request.query.id.replace(/ /g, "");
     let sensor = request.query.sensorType;
     let reading = request.query.reading;
 
     response.json({
-        message : "Readings reached",
-        id : user_id
+        message : "Readings reached"
     })
 
     // Store data in database
