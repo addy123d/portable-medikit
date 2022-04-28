@@ -21,6 +21,18 @@ let app = express();
 
 app.set("view engine","ejs");
 
+app.get("/register",(request,response)=>{
+    response.render("register");
+});
+
+app.get("/login",(request,response)=>{
+    response.render("login");
+});
+
+app.get("/dashboard",(request,response)=>{
+    response.render("dashboard");
+})
+
 app.get("/home/:id",(request,response)=>{
 
     let {id} = request.params;
@@ -97,3 +109,8 @@ app.get("/test",(request,response)=>{
 app.listen(port,host,()=>{
     console.log(`Server is running at ${port}`);
 })
+
+
+// Landing page 
+// Register Login
+// Data Page 
