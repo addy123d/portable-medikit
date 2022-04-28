@@ -325,13 +325,13 @@ main>section#content>section#footer {
         </span>
         <nav role="navigation">
             <span class="icon">
-                <i class="fas fa-bell fa-lg bell">
+                <i class="fas fa-cross fa-lg sign-out">
                     <span id="nav-notify"></span> </i>
             </span>
             <span id="user-store">
                 <img src="https://th.gravatar.com/userimage/11166620/5240b96d842ad241cfd6521036ed2152.png"
                     alt="User Tonkung" sizes="" srcset="">
-                <h4 id="username">Kajal</h4>
+                <h4 id="username"><%=name%></h4>
                 <i class="fas fa-caret-down fa-lg dowm"></i>
             </span>
         </nav>
@@ -341,21 +341,23 @@ main>section#content>section#footer {
             <ul>
                 <li>
                     <i class="fas fa-columns aside-icon fa-lg"></i>
-                    <span class="text-menu">Pulse Readings</span>
+                    <span class="text-menu">Readings</span>
                 </li>
             </ul>
         </aside>
         <section id="content" role="article">
             <section id="article">
+                <%for(let i = 0; i < deviceData.length; i++){%>
                 <article>
-                    <h2>Temperature</h2>
-                    <p>32&deg;</p>
+                    <h2><%=deviceData[i].sensorName%></h2>
+                    <p><%=deviceData[i].reading%></p>
                 </article>
+                <%}%>
 
             </section>
             <section id="footer">
                 <footer role="contentinfo">
-                    <p>&copy; Develop Dashboard Admin @ 2020 Made By Tonkng Version 1.0</p>
+                    <p>&copy; Dashboard Admin @ 2022</p>
                 </footer>
             </section>
         </section>

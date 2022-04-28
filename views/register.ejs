@@ -125,7 +125,7 @@
                     <input type="text" id="name" placeholder="Name" autocomplete="off">
                 </div>
                 <div class="email">
-                    <input type="email" id="email" placeholder="RFID TAG Number" autocomplete="off">
+                    <input type="text" id="rfid" placeholder="RFID TAG Number" autocomplete="off">
                 </div>
                 <div class="contact">
                     <input type="text" id="contact" placeholder="Contact Number" autocomplete="off">
@@ -144,6 +144,56 @@
     </section>
 </body>
 <script>
-    
+    const name = document.querySelector("#name"),
+          rfid = document.querySelector("#rfid"),
+          contact = document.querySelector("#contact"),
+          password = document.querySelector("#password");
+
+
+    const registerButton = document.querySelector("#registerButton");
+
+
+    registerButton.addEventListener("click",()=>{
+        let options = {
+            method : "POST",
+            body : JSON.stringify({
+                name : name.value,
+                rfid : rfid.value,
+                contact : contact.value,
+                password : password.value
+            }),
+            headers : new Headers({
+                'Content-Type' : 'application/json'
+            })
+        }
+
+
+        fetch('/registerDetails',options)
+            .then(res=>res.json())
+            .then((result)=>{
+                // alert(result.code);
+                if(result.code === 200){
+                    document.querySelector(".notification").innerHTML = "<h2>Success ✅</h2>";
+                    location.href = `${location.origin}/dashboard`;  
+                }else{
+                    document.querySelector(".notification").innerHTML = "<h2>Failed ❌</h2>"; 
+                }
+                document.querySelector(".notification").classList.add("active");
+
+                setTimeout(()=>{
+                    document.querySelector(".notification").classList.remove("active");
+                },2000)
+            })
+            .catch(err=>console.log("Error: ",err));
+
+            setTimeout(()=>{
+                    document.querySelector(".notification").classList.remove("active");
+                },2000)
+
+                name.value = "";
+                rfid.value = "";
+                contact.value = "";
+                password.value = "";
+    })
 </script>
 </html>
